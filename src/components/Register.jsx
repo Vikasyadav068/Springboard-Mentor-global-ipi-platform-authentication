@@ -114,13 +114,15 @@ function Register() {
             onKeyPress={handleKeyPress}
             autoComplete="new-password"
           />
-          <button
-            type="button"
-            className="password-toggle"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? "🙈" : "👁️"}
-          </button>
+          {password.length > 0 && (
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </button>
+          )}
         </div>
       </div>
       
@@ -136,13 +138,15 @@ function Register() {
             onKeyPress={handleKeyPress}
             autoComplete="new-password"
           />
-          <button
-            type="button"
-            className="password-toggle"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          >
-            {showConfirmPassword ? "🙈" : "👁️"}
-          </button>
+          {confirmPassword.length > 0 && (
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? "🙈" : "👁️"}
+            </button>
+          )}
         </div>
       </div>
       

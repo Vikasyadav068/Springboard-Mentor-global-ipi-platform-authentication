@@ -181,6 +181,17 @@ body {
   cursor: pointer;
   padding: 0;
   z-index: 1;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.password-toggle:hover {
+  transform: scale(1.1);
+}
+
+.password-toggle:active {
+  transform: scale(0.9);
 }
 
 .form-input:focus {

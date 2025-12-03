@@ -86,13 +86,15 @@ function Login() {
             onKeyPress={handleKeyPress}
             autoComplete="current-password"
           />
-          <button
-            type="button"
-            className="password-toggle"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? "🙈" : "👁️"}
-          </button>
+          {password.length > 0 && (
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </button>
+          )}
         </div>
       </div>
       
