@@ -67,7 +67,7 @@ function ForgotPassword() {
           document.body.removeChild(toast);
         }
       }, 300);
-    }, 3000);
+    }, 2000);
   };
 
   const handleReset = async () => {
@@ -171,38 +171,12 @@ function ForgotPassword() {
       </div>
 
       <div style={{ marginTop: '1.5rem', padding: '1rem', backgroundColor: 'rgba(102, 126, 234, 0.1)', borderRadius: '8px', fontSize: '14px', color: '#555' }}>
-        <strong>📧 Email Reset Instructions:</strong>
+        <strong>📧 Instructions:</strong>
         <ul style={{ marginTop: '0.5rem', marginBottom: '0', paddingLeft: '1.2rem' }}>
-          <li>Check your spam/junk folder if you don't see the email</li>
-          <li>The reset link will expire in 1 hour</li>
-          <li>You can only request a reset email every few minutes</li>
-          <li>Make sure you entered the correct email address</li>
-          <li>If you don't receive the email, the address might not be registered</li>
+          <li>Check spam folder if not received</li>
+          <li>Link expires in 1 hour</li>
         </ul>
       </div>
-      
-      {/* Test button for debugging - remove in production */}
-      {process.env.NODE_ENV === 'development' && (
-        <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-          <button 
-            style={{
-              background: 'transparent',
-              border: '1px solid #ccc',
-              padding: '5px 10px',
-              borderRadius: '4px',
-              fontSize: '12px',
-              cursor: 'pointer'
-            }}
-            onClick={() => {
-              console.log('Firebase Auth instance:', auth);
-              console.log('Current user:', auth.currentUser);
-              showToast('Test toast notification!', 'success');
-            }}
-          >
-            🔧 Debug Info
-          </button>
-        </div>
-      )}
     </div>
   );
 }
