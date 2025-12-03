@@ -9,9 +9,9 @@ const firebaseConfig = {
   apiKey: "",
   authDomain: "",
   projectId: "",
-  storageBucket: "r",
-  messagingSenderId: "45665",
-  appId: "454"
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 
 // Initialize Firebase
@@ -19,3 +19,4 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
