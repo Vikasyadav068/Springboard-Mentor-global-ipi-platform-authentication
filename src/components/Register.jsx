@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, googleProvider } from "../firebase";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import "../App.css";
 
@@ -52,6 +52,22 @@ function Register() {
       } else {
         setError("Registration failed. Please try again.");
       }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleRegister = async () => {
+    setLoading(true);
+    setError("");
+    
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log("Google user:", result.user);
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Google registration failed. Please try again.");
+      console.error("Google registration error:", err.message);
     } finally {
       setLoading(false);
     }
@@ -111,6 +127,18 @@ function Register() {
         disabled={loading}
       >
         {loading ? "Creating Account..." : "Create Account"}
+      </button>
+      
+      <div style={{ textAlign: 'center', margin: '1rem 0', color: '#666' }}>
+        <span>or</span>
+      </div>
+      
+      <button 
+        className="btn-google" 
+        onClick={handleGoogleRegister}
+        disabled={loading}
+      >
+        🌐 Sign up with Google
       </button>
       
       <div className="auth-links">

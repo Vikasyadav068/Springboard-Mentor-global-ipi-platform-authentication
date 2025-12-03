@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../firebase";
 import { useNavigate, Link } from "react-router-dom";
 import "../App.css";
 
@@ -25,6 +25,22 @@ function Login() {
       navigate("/dashboard");
     } catch (err) {
       setError("Invalid email or password. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    setLoading(true);
+    setError("");
+    
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log("Google user:", result.user);
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Google login failed. Please try again.");
+      console.error("Google login error:", err.message);
     } finally {
       setLoading(false);
     }
@@ -72,6 +88,18 @@ function Login() {
         disabled={loading}
       >
         {loading ? "Signing In..." : "Sign In"}
+      </button>
+      
+      <div style={{ textAlign: 'center', margin: '1rem 0', color: '#666' }}>
+        <span>or</span>
+      </div>
+      
+      <button 
+        className="btn-google" 
+        onClick={handleGoogleLogin}
+        disabled={loading}
+      >
+        🌐 Sign in with Google
       </button>
       
       <div className="auth-links">
