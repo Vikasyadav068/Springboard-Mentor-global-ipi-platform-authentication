@@ -8,6 +8,8 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -86,39 +88,62 @@ function Register() {
       {error && <div className="error-message">{error}</div>}
       
       <div className="form-group">
-        <input
-          type="email"
-          className="form-input"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onKeyPress={handleKeyPress}
-          autoComplete="email"
-        />
+        <div className="input-wrapper">
+          <span className="input-icon">📧</span>
+          <input
+            type="email"
+            className="form-input with-icon"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyPress={handleKeyPress}
+            autoComplete="email"
+          />
+        </div>
       </div>
       
       <div className="form-group">
-        <input
-          type="password"
-          className="form-input"
-          placeholder="Create a password (min 6 characters)"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          onKeyPress={handleKeyPress}
-          autoComplete="new-password"
-        />
+        <div className="input-wrapper">
+          <span className="input-icon">🔒</span>
+          <input
+            type={showPassword ? "text" : "password"}
+            className="form-input with-icon"
+            placeholder="Create a password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyPress={handleKeyPress}
+            autoComplete="new-password"
+          />
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? "🙈" : "👁️"}
+          </button>
+        </div>
       </div>
       
       <div className="form-group">
-        <input
-          type="password"
-          className="form-input"
-          placeholder="Confirm your password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          onKeyPress={handleKeyPress}
-          autoComplete="new-password"
-        />
+        <div className="input-wrapper">
+          <span className="input-icon">🔐</span>
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            className="form-input with-icon"
+            placeholder="Confirm your password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            onKeyPress={handleKeyPress}
+            autoComplete="new-password"
+          />
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+          >
+            {showConfirmPassword ? "🙈" : "👁️"}
+          </button>
+        </div>
       </div>
       
       <button 

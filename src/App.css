@@ -143,6 +143,20 @@ body {
   position: relative;
 }
 
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  font-size: 18px;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .form-input {
   width: 100%;
   padding: 15px 20px;
@@ -152,6 +166,21 @@ body {
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.8);
   outline: none;
+}
+
+.form-input.with-icon {
+  padding-left: 50px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1;
 }
 
 .form-input:focus {

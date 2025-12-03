@@ -77,7 +77,7 @@ function Dashboard() {
           
           <div style={{ marginBottom: '1rem' }}>
             <p style={{ color: '#666', textAlign: 'center', marginBottom: '1rem' }}>
-              🎉 You have successfully logged in! Your account is secure and ready to use.
+              You have successfully logged in..
             </p>
           </div>
           

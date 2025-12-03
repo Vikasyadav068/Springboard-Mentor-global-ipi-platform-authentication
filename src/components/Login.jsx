@@ -7,6 +7,7 @@ import "../App.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -59,27 +60,40 @@ function Login() {
       {error && <div className="error-message">{error}</div>}
       
       <div className="form-group">
-        <input
-          type="email"
-          className="form-input"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onKeyPress={handleKeyPress}
-          autoComplete="email"
-        />
+        <div className="input-wrapper">
+          <span className="input-icon">📧</span>
+          <input
+            type="email"
+            className="form-input with-icon"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyPress={handleKeyPress}
+            autoComplete="email"
+          />
+        </div>
       </div>
       
       <div className="form-group">
-        <input
-          type="password"
-          className="form-input"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          onKeyPress={handleKeyPress}
-          autoComplete="current-password"
-        />
+        <div className="input-wrapper">
+          <span className="input-icon">🔒</span>
+          <input
+            type={showPassword ? "text" : "password"}
+            className="form-input with-icon"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyPress={handleKeyPress}
+            autoComplete="current-password"
+          />
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? "🙈" : "👁️"}
+          </button>
+        </div>
       </div>
       
       <button 

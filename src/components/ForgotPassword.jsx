@@ -145,16 +145,19 @@ function ForgotPassword() {
       {message && <div className="success-message">{message}</div>}
 
       <div className="form-group">
-        <input
-          type="email"
-          className="form-input"
-          placeholder="Enter your registered email address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onKeyPress={handleKeyPress}
-          autoComplete="email"
-          autoFocus
-        />
+        <div className="input-wrapper">
+          <span className="input-icon">📧</span>
+          <input
+            type="email"
+            className="form-input with-icon"
+            placeholder="Enter your registered email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyPress={handleKeyPress}
+            autoComplete="email"
+            autoFocus
+          />
+        </div>
       </div>
 
       <button className="btn-primary" onClick={handleReset} disabled={loading}>
