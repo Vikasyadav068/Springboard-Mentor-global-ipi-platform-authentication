@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 function ForgotPassword() {
@@ -9,7 +9,6 @@ function ForgotPassword() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -167,7 +166,7 @@ function ForgotPassword() {
 
       <div className="auth-links">
         <p>
-          Remember your password? <Link to="/" onClick={() => navigate('/', { replace: true })}>Back to Sign In</Link>
+          Remember your password? <Link to="/">Back to Sign In</Link>
         </p>
         <p>
           Don't have an account? <Link to="/register">Create Account</Link>

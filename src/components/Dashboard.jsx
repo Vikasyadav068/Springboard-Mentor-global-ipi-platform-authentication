@@ -24,8 +24,7 @@ function Dashboard() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // Replace history to prevent back navigation to dashboard after logout
-      navigate("/", { replace: true });
+      navigate("/");
     } catch (error) {
       console.error("Error signing out:", error);
     }
